@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(38, 38, 119);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-div {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.main-div button {
+    background-color: chartreuse;
+    border-radius: 8px;
+    width: 60px;
+    border: 1px solid chartreuse;
+    color: black;
+    cursor: pointer;
+}

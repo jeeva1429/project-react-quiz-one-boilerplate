@@ -1,0 +1,29 @@
+body {
+    background-color: blueviolet;
+}
+.main-div {
+    width: 700px;
+    height: 500px;
+    padding:40px;
+    background-color: aliceblue;
+}
+h1 {
+    text-align: center;
+}
+.results-div div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    width: 700px;
+}
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(2,200px);
+    margin-top: 30px;
+}
+.btn-container button {
+    width: 130px;
+    background-color: rgb(167, 243, 92);
+    padding: 10px;
+}
