@@ -8,7 +8,7 @@ body {
 .container {
     height: 600px;
     width: 800px;
-    background-color:rgb(221, 216, 216);
+    background-color:rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@ body {
 }
 .options-div {
     display: grid;
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(2, 250px);
     justify-content: center;
     gap: 30px;
 }
@@ -45,13 +45,19 @@ p {
     padding: 10px 20px;
 }
 .nav-div button:nth-child(1) {
-    background-color: rgb(70, 70, 158);
+    background-color: rgb(110, 110, 196);
+    border: 0;
 }
 .nav-div button:nth-child(2) {
     background-color: rgb(80, 200, 80);
+    border: 0;
 }
 .nav-div button:nth-child(3){
     background-color: rgb(216, 97, 97);
+    border: 0;
+}
+button {
+    cursor: pointer;
 }
 
 .options-div button {
