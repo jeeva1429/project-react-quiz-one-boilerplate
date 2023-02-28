@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(38, 38, 119);
+    background-color: rgb(117, 117, 168);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@ body {
 .container {
     height: 600px;
     width: 800px;
-    background-color:rgb(255, 255, 255);
+    background-color:rgb(243, 238, 238);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +28,7 @@ body {
     grid-template-columns: repeat(2, 250px);
     justify-content: center;
     gap: 30px;
+    
 }
 .nav-div {
     display: flex;
@@ -47,23 +48,26 @@ p {
 .nav-div button:nth-child(1) {
     background-color: rgb(110, 110, 196);
     border: 0;
+    color: aliceblue;
 }
 .nav-div button:nth-child(2) {
     background-color: rgb(80, 200, 80);
     border: 0;
 }
 .nav-div button:nth-child(3){
-    background-color: rgb(216, 97, 97);
-    border: 0;
+    border: 1px solid rgb(216, 97, 97);
+    color: rgb(216, 97, 97);
 }
 button {
     cursor: pointer;
 }
 
 .options-div button {
-    background-color: rgb(121, 121, 212);
     border-radius: 10px;
-    border: 1px solid rgb(121, 121, 212);
+    border: 0;
     height: 30px;
+    color: rgb(0, 0, 0)
+    ;
+    background-color: rgb(144, 130, 225);
 }
 

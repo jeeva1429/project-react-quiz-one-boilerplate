@@ -10,13 +10,13 @@ class Quiz extends Component{
     }
     }
     nextQuestion(){ 
-        if(this.state.questionNo<14){
+        if(this.state.questionNo < 14){
       this.setState({questionNo:this.state.questionNo+1})
         }
     }
      
     previousQuestion(){
-        if(this.state.questionNo >0){
+        if(this.state.questionNo > 0){
         this.setState({questionNo:this.state.questionNo-1})}
     }
     quit(){
