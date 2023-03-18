@@ -1,53 +1,137 @@
-import React , {Component} from 'react';
-import '../components/quizComponent.css'
-import data from '../resources/question.json'
-class Quiz extends Component{
-    constructor(props){
-        super(props)
+import React, { Component, createContext } from "react";
+import { Link, Route, Routes, withRouter } from "react-router-dom";
+import Result from "./resultComponent";
+import "../components/quizComponent.css";
+import data from "../resources/question.json";
+
+class Quiz extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-        questionNo:0,
+      questionNo: 0,
+      score: 0,
+      wrongAnswer: 0,
+      correctAnswer: 0,
+    };
+  }
+
+  next() {
+    if (this.state.questionNo < 14) {
+      this.setState((prevState) => ({
+        questionNo: prevState.questionNo + 1,
+      }));
     }
+  }
+
+  previous() {
+    if (this.state.questionNo > 0) {
+      this.setState((prevState) => ({
+        questionNo: prevState.questionNo - 1,
+      }));
     }
-    nextQuestion(){ 
-        if(this.state.questionNo < 14){
-      this.setState({questionNo:this.state.questionNo+1})
+  }
+  resetState() {
+    this.setState({
+      questionNo: 0,
+      score: 0,
+      wrongAnswer: 0,
+      correctAnswer: 0,
+      // add more state variables here and set their default values
+    });
+  }
+  quit() {
+    window.confirm("do you want to quit")
+      ? this.resetState()
+      : this.setState({ questionNo: this.state.questionNo });
+  }
+
+  isCorrect(event, selectedAnswer) {
+    const correctAnswer = data[this.state.questionNo].answer;
+    if (selectedAnswer === correctAnswer) {
+      this.setState(
+        (prevState) => ({
+          score: prevState.score + 1,
+          correctAnswer: prevState.correctAnswer + 1,
+        }),
+        () => {
+          alert("It is correct answer");
         }
+      );
+    } else {
+      this.setState(
+        (prevState) => ({
+          wrongAnswer: prevState.wrongAnswer + 1,
+        }),
+        () => {
+          alert("It is a wrong answer");
+        }
+      );
     }
-     
-    previousQuestion(){
-        if(this.state.questionNo > 0){
-        this.setState({questionNo:this.state.questionNo-1})}
-    }
-    quit(){
-        window.confirm('Are you want to quit')?this.setState({questionNo:this.state.questionNo-this.state.questionNo}):this.setState({questionNo:this.state.questionNo})
-    }
-    render(){
-        return (
-            <div className='container'>
-                <div id='sub-container'>
-                <h1>Question {this.state.questionNo+1}</h1>
-                    <div id='question-no'>
-                    <span>{this.state.questionNo+1} of 15</span>
-                    </div>
-                    
-                    <p>{data[this.state.questionNo].question}</p>
-                    <div className='options-div'>
-                            <button>{data[this.state.questionNo].optionA} </button>
-                            <button>{data[this.state.questionNo].optionB}</button>
-                            <button>{data[this.state.questionNo].optionC}</button>
-                            <button>{data[this.state.questionNo].optionD}</button>
-                    </div>
-                    <div className='nav-div'>
-                            <button onClick={this.previousQuestion.bind(this)}>Previous</button>
-                            <button onClick={this.nextQuestion.bind(this)}>Next</button>
-                            <button onClick={this.quit.bind(this)}>Quit</button>
-                    </div>
+  }
 
-                </div>
-            </div>
-        )
-    }
+  selectOptions() {
+    this.setState({
+      questionNo: this.state.questionNo + 1,
+    });
+  }
+  render() {
+    const options = [
+      data[this.state.questionNo].optionA,
+      data[this.state.questionNo].optionB,
+      data[this.state.questionNo].optionC,
+      data[this.state.questionNo].optionD,
+    ];
+
+    const functionList = ["previous", "next", "quit"];
+
+    const resultData = {
+      score: this.state.score,
+      totalQuestions: this.state.questionNo,
+      attempted: this.state.questionNo,
+      correctAnswers: this.state.correctAnswer,
+      wrongAnswers: this.state.wrongAnswer,
+    };
+
+    return (
+      <div className="container">
+        <div id="sub-container">
+          <h1 id='quesNo'>Question {this.state.questionNo + 1}</h1>
+          <div id="question-no">
+            <span>{this.state.questionNo + 1} of 15</span>
+          </div>
+          <p id='question'>{data[this.state.questionNo].question}</p>
+          <div className="options-div">
+            {options.map((option) => (
+              <button
+                key={option}
+                onClick={(event) => {
+                  this.isCorrect(event, option);
+                  this.selectOptions();
+                }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+          <div className="nav-div">
+            {functionList.map(
+              (
+                el //Here we are creating functions and buttons and also appending fucntions it to
+              ) => (
+                <button key={el} onClick={() => this[el]()}>
+                  {el}
+                </button>
+              )
+            )}
+
+            <Link to="/result" state={resultData}>
+              <button id='finish'>Finish</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default Quiz
+export default Quiz;

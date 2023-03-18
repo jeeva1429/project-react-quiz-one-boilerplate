@@ -37,37 +37,91 @@ body {
     height: 25%;
     gap: 35px;
 }
-p {
-    margin-bottom: 50px;
+#quesNo {
+    position: relative;
+    bottom: 64px;
+    font-size: 50px;
+}
+#question {
+    font-size: 24px;
+    position: relative;
+    bottom: 36px;
+    font-weight: 600;
+}
+#question-no {
+    position: relative;
+    bottom: 48px;
 }
 
 .nav-div button{
     border-radius: 5px;
-    padding: 10px 20px;
-}
-.nav-div button:nth-child(1) {
-    background-color: rgb(110, 110, 196);
+    font-size: 17px;
+    padding: 10px 48px;
+    font-weight: 600;
     border: 0;
-    color: aliceblue;
+    box-shadow: 5px 5px rgb(146, 134, 134);
+  
 }
+.nav-div button:hover {
+    filter: brightness(70%);
+    color: rgba(255, 255, 255, 1);
+}
+.nav-div button:active {
+   position: relative;
+   top: 5px;
+   left: 5px;
+   box-shadow: 0px 0px ;
+   
+}
+
+.nav-div button:nth-child(1) {
+    background-color: rgb(217, 118, 79);
+    color: white;
+}
+.nav-div button:nth-child(1):hover {
+    background-color: rgb(217, 118, 79);
+    color: white;
+}
+
 .nav-div button:nth-child(2) {
     background-color: rgb(80, 200, 80);
-    border: 0;
 }
 .nav-div button:nth-child(3){
-    border: 1px solid rgb(216, 97, 97);
+    border: 1px solid rgb(172, 13, 13);
     color: rgb(216, 97, 97);
+    background-color: white;
 }
 button {
     cursor: pointer;
-}
+} 
 
 .options-div button {
     border-radius: 10px;
     border: 0;
-    height: 30px;
-    color: rgb(0, 0, 0)
-    ;
-    background-color: rgb(144, 130, 225);
+    height: 50px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 15px;
+    background-color: rgb(151, 54, 192);
+    box-shadow: 5px 5px rgb(60, 59, 59);
+
+}
+.options-div button:hover {
+    transform: scale(1.05);
+    transition: transform ease-in 0.2s;
+    filter: brightness(70%);
+    color: black;
+}
+.options-div button:active {
+    position: relative;
+   top: 5px;
+   left: 5px;
+   box-shadow: 0px 0px;
+
+}
+#finish{
+    background-color: rgb(33, 38, 33);
+    color: rgb(255, 255, 255);
+
 }
 
